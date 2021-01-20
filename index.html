@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href= 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/ui-lightness/jquery-ui.css' rel='stylesheet'>
+  
+    <!-- JQuery UI -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" >
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- <link rel = "stylesheet" href = "tablestyle.css"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+    
+    <title>Simple</title>
+</head>
+<body>
+    <table class="table table-striped">
+      <thead>
+        <th>User</th>
+        <th>Date</th>
+        <th>Comment</th>
+      </thead>
+
+    </table>
+</body>
+</html>
+
+<script>
+$(document).ready(function() {
+  infoTableJson = {}
+  buildInfoTable();
+
+});
+
+function buildInfoTable()
+{
+	$.ajax({ //allows to updates without refreshing 
+	 url: "comments.json",
+	 success: function(data){
+
+   data = JSON.parse(data)
+	 var tblSomething = '<tbody>';
+
+	 $.each(data, function(idx, obj){
+
+	 //Outer .each loop is for traversing the JSON rows
+	 tblSomething += '<tr>';
+
+	 //Inner .each loop is for traversing JSON columns
+	 $.each(obj, function(key, value){
+   tblSomething += '<td data-key="' + key + '">' + value + '</td>';
+	 });
+   //tblSomething += '<td><button class="editrow"></button></td>'
+   tblSomething += '</tr>';
+	 });
+	 tblSomething += '</tbody>';
+	 $('.table').append(tblSomething);
+
+
+
+   $('.table tr').on('click', function() {
+     var row = $(this).closest('tr')
+     var index = row.index(this);
+
+     var comment = row.find('td:nth-child(3)').text()
+
+      var newDialog = $("<div>", {
+         id: "edit-form"
+       });
+
+ 
+     newDialog.append("<label style='display: block;'>Comment</label><input style='width: 300px'; type='text' id='commentInput' value='" + comment + "'/>");
+
+     //  JQUERY UI DIALOG
+     newDialog.dialog({
+       resizable: false,
+       title: 'Edit',
+       height: 350,
+       width: 350,
+       modal: true,
+       autoOpen: false,
+       buttons: [{
+         text: "Save",
+         click: function() {
+         
+           var comment = newDialog.find('#commentInput').val();
+        
+           row.find('td[data-key="Comment"]').html(comment)
+          // update data
+          console.log(index);
+          data[0].Comment = comment;
+
+           $.ajax({
+               type: "POST",
+               url: "save.asp",
+               data: {'data' : JSON.stringify(data) , 'path' : 'comments.json'},
+               success: function(){},
+               failure: function(errMsg) {
+                   alert(errMsg);
+               }
+           });
+           $(this).dialog("close");
+           $(this).dialog('destroy').remove()
+
+         }
+       }, {
+         text: "Cancel",
+         click: function() {
+           $(this).dialog("close");
+           $(this).dialog('destroy').remove()
+         }
+       }]
+     });
+     //$("body").append(newDialog);
+     newDialog.dialog("open");
+
+
+   })
+
+
+	 },
+	 error: function(jqXHR, textStatus, errorThrown){
+	 alert('Hey, something went wrong because: ' + errorThrown);
+	 }
+	 });
+}
+
+</script>

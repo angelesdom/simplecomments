@@ -1,0 +1,291 @@
+
+body { 
+	font: 14px/1.4 Tahoma; 
+}
+#page-wrap {
+	margin: 50px;
+}
+p{
+	text-align: right;
+	padding-right: 20px;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	text-decoration: black;
+}
+h1{
+	text-align: center;
+	background-color: beige;
+}
+	/* 
+	Generic Styling, for Desktops/Laptops 
+	*/
+	table {
+		border-collapse: collapse;
+		border-spacing: 0;
+		width: 100%;
+		border: 1px solid #ddd;
+	  }
+	/* Zebra striping */
+	tr:nth-of-type(odd) { 
+		background: #eee; 
+	}
+	th { 
+		background: #333; 
+		color: white; 
+		font-weight: bold; 
+	}
+	td, th { 
+		padding: 6px; 
+		border: 1px solid rgb(204, 204, 204); 
+		text-align: left;
+		
+		
+		
+	}
+
+.MenuBar{
+		background-color: rgb(128, 128, 128);
+		text-align: left;
+	  }
+.MenuBar ul{
+	display: inline-flex;
+	list-style: none;
+	color: whitesmoke;
+	font-family: 'Lucida Sans';
+	  
+	  }
+.MenuBar li{
+	width: 120px;
+	margin: 15px;
+	padding: 15px;
+	  
+	  
+	}
+.MenuBar ul li a{
+	text-decoration: none;
+	text-align: left;
+	color: rgb(0, 0, 0);
+	font-size: medium;
+	font-family: 'Lucida Sans', ;
+	  
+	}
+	.active,.MenuBar ul li:hover{
+	background-color:rgb(146, 146, 146);
+	border-radius: 3px;
+	  
+	}
+.copper{
+	display: none;
+	text-align: left;
+		
+	   
+	}
+.MenuBar ul li:hover .copper{
+	display: block;
+	position: absolute;
+	background-color:grey;
+	margin-top: 15px;
+	margin-right: 15px;
+	  
+	  
+	   } 
+.MenuBar ul li:hover .copper ul{
+	display: block;
+	margin-top: 10px;
+	border-radius: 3px;
+	margin-right: none;
+	}
+tr:hover {
+	background-color: #fcc598;
+	  }
+
+#title{
+	text-shadow: 2px 2px 5px rgb(163, 161, 161);
+	text-align: center;
+	background-color: white;
+}
+
+
+
+
+
+td:nth-child(10){
+	width: 200px;	
+}
+td:nth-child(13){
+	width: 200px;
+}
+td:nth-child(14){
+	width: 150px;
+}
+td:nth-child(8){
+	width: 150px;
+}
+td:nth-child(11){
+	width: 150px;
+}
+td:nth-child(3){
+	width: 100px;
+}
+td:nth-child(4){
+	width: 100px;
+}
+td:nth-child(1){
+	width: 100px;
+}
+td:nth-child(1){
+	width: 100px;
+}
+td:nth-child(9){
+	width: 100px;
+}
+td:nth-child(7){
+	width: 100px;
+}
+td:nth-child(2){
+	width: 100px;
+}
+td:nth-child(5){
+	width: 100px;
+}
+td:nth-child(6){
+	width: 100px;
+}
+
+
+p{
+	font-size: 15px;
+}
+
+.quicknav{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	
+}
+
+#box{
+	width: 100px;
+	height: 100px;
+
+
+}
+
+
+h4{
+	text-align: center;
+}
+.upmachine{
+	height: 70px;
+	width: 70px;
+	background-color: chartreuse;
+}
+.downmachine{
+	height: 70px;
+	width: 70px;
+	background-color: rgb(248, 11, 11);
+}
+.idlemachine{
+	height: 70px;
+	width: 70px;
+	background-color: rgb(238, 255, 0);
+
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+.row {
+	display: flex;
+	margin-left:-5px;
+	margin-right:-5px;
+  }
+  
+  .column {
+	flex: 50%;
+	padding: 5px;
+  } 
+  .input td{
+	  height: 83px;
+  }
+  .input th{
+	  height:89px;
+  }
+#engcomment{
+	font-size: large;
+}
+
+#toggle{
+	visibility: hidden;
+	opacity: 0;
+	position: relative;
+	z-index: -1;
+  }
+  
+  #toggle:checked ~ dialog {
+	display: block;
+  }
+  
+  label{
+	background: rgb(158, 158, 158);
+	color: white;
+	padding: 1em 1em;
+	border-radius: 4px;
+  }
+  @keyframes appear {
+	0%{
+	  opacity: 0;
+	  transform: translateY(-10px);
+	}
+  }
+  
+  dialog{
+	animation: appear 350ms ease-in 1;
+	max-width: 500px;
+  }
+  
+
+  .btn {
+	padding: 8px 20px;
+	border-radius: 0;
+	overflow: hidden;
+  
+  }
+  
+
+  
+  .form-input-material {
+	--input-default-border-color: white;
+	--input-border-bottom-color: white;
+  
+	
+  }
+  
+  .login-form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 50px 40px;
+	color: white;
+	background: rgba(0, 0, 0, 0.8);
+	border-radius: 10px;
+	box-shadow: 0 0.4px 0.4px rgba(128, 128, 128, 0.109),
+	  0 1px 1px rgba(128, 128, 128, 0.155),
+	  0 2.1px 2.1px rgba(128, 128, 128, 0.195),
+	  0 4.4px 4.4px rgba(128, 128, 128, 0.241),
+	  0 12px 12px rgba(128, 128, 128, 0.35);
+  
+	
+  }
+	.form-input-material {
+	  margin: 12px 0;
+	}
+  
+	.btn {
+	  width: 100%;
+	  margin: 18px 0 9px 0;
+	}
+  
+#namesmall{
+	font-size: 12px;
+}
